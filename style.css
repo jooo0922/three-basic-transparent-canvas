@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+
+/* 모든 요소에 대해서 루트 태그인 html의 box-sizing 속성값인 border-box를 상속받도록 함. */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2; /* 캔버스가 #content 요소보다 앞으로 튀어나오게 함. 왜? 캔버스가 투명해지면 뒤에 있는 요소가 비쳐지니 투명해졌는지 제대로 확인할 수 있으니까 */
+  pointer-events: none; /* pointer-events: none으로 지정하면 해당 요소에 정의된 click, hover, active, 커서 옵션 등의 이벤트가 비활성화되고, 마우스 및 터치 이벤트를 받지 않도록 해줌. */
+  /* 왜 이걸 해줄까? 캔버스보다 뒤쪽에 위치하게 되는 #content를 캔버스 요소를 무시하고 바로 선택하거나 pointer-events를 받도록 하기 위함. */
+}
+
+#content {
+  font-size: 7vw; /* 전체 뷰포트 너비의 7%만큼을 폰트 사이즈로 할당하라는 뜻 */
+  font-family: sans-serif;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  /* 자식요소인 h1, p의 display를 flex로 해주고, 가로 세로 align을 가운데 정렬로 맞춰줌 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
